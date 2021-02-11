@@ -62,7 +62,7 @@ if args.list:
     print("--------------------------------------------------------")
     for x in os.listdir('{}/playbooks/'.format(prefix_dir)):
       print(x)
-
+    print(" ")
     print("Game Server Containers List")
     print("--------------------------------------------------------")
     game_list = app_settings["game_list"].split(',')
