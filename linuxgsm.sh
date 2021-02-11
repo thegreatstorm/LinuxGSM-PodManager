@@ -30,7 +30,6 @@ description = config_settings.get('general', 'description')
 app_settings["app_name"] = config_settings.get('general', 'app_name')
 app_settings["version"] = config_settings.get('general', 'version')
 app_settings["description"] = config_settings.get('general', 'description')
-app_settings["game_list"] = config_settings.get('general', 'server_list')
 app_settings["log_dir"] = config_settings.get('logging', 'log_dir')
 app_settings["app_dir"] = prefix_dir
 
@@ -60,7 +59,6 @@ if args.create:
         create_game_server(app_settings, user_input)
 
 if args.list:
-    game_list = app_settings["game_list"].split(',')
     print("Game Server List")
     print("--------------------------------------------------------")
     for x in os.listdir('{}/playbooks/'.format(prefix_dir)):
