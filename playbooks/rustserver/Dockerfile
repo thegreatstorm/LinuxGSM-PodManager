@@ -11,6 +11,5 @@ RUN adduser rustserver --no-create-home --disabled-password --gecos ""
 USER rustserver
 RUN wget https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh -P /home/rustserver && \
 		chmod +x /home/rustserver/linuxgsm.sh && \
-		/home/rustserver/./linuxgsm.sh rustserver && \
-		/home/rustserver/./rustserver install
+		/home/rustserver/./linuxgsm.sh rustserver
 RUN whoami
