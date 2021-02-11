@@ -10,5 +10,5 @@ RUN adduser rustserver
 RUN wget -O /home/rustserver/linuxgsm.sh https://linuxgsm.com/dl/linuxgsm.sh
 RUN chmod +x /home/rustserver/linuxgsm.sh
 USER rustserver
-RUN ./linuxgsm.sh rustserver
-RUN ./rustserver install
+RUN /home/rustserver/./linuxgsm.sh rustserver
+RUN /home/rustserver/./rustserver install
