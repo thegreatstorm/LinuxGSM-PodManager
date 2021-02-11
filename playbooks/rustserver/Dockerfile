@@ -8,11 +8,9 @@ RUN apt install -y curl wget file tar bzip2 gzip unzip bsdmainutils python util-
 ENV TERM=xterm
 RUN adduser rustserver --no-create-home --disabled-password --gecos ""
 ## linuxgsm.sh
-RUN wget https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh -P /home/rustserver
-RUN chmod +x /home/rustserver/linuxgsm.sh
-RUN chown rustserver:rustserver -R /home/rustserver/
-RUN ls -asl /home/rustserver/
+USER rustserver
+RUN wget https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh -P /home/rustserver && \
+		chmod +x /home/rustserver/linuxgsm.sh && \
+		/home/rustserver/./linuxgsm.sh rustserver && \
+		/home/rustserver/./rustserver install
 RUN whoami
-# USER rustserver
-# RUN /home/rustserver/./linuxgsm.sh rustserver
-# RUN /home/rustserver/./rustserver install
