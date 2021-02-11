@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 # Setting up SteamCMD install
-RUN apk add --update --no-cache \
+RUN dpkg add --update --no-cache \
         tar \
         wget \
  && mkdir -p /app \
