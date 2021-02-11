@@ -1,10 +1,12 @@
-FROM centos
+FROM ubuntu:latest
 
-RUN systemctl enable sshd
-RUN yum update -y
-RUN yum install -y epel-release
-RUN yum install -y git python38.x86_64 ansible ncurses passwd
-RUN echo "alias ll='ls -l --color=auto'" >> /root/.bashrc
-
-# Requirements for LinuxGSM
-RUN yum install -y curl wget tar bzip2 gzip unzip python3 binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 zlib-devel
+#Setting up pre-requirements.
+RUN apt-get update
+RUN dpkg --add-architecture i386;
+RUN apt update -y ;
+RUN apt install -y curl wget file tar bzip2 gzip unzip bsdmainutils python util-linux ca-certificates binutils bc jq tmux netcat lib32gcc1 lib32stdc++6 lib32z1
+ENV TERM=xterm
+RUN adduser rustserver
+RUN su - rustserver
+RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh rustserver
+RUN ./rustserver install
