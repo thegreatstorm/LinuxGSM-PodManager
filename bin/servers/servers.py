@@ -5,14 +5,14 @@ import threading
 from bin.utils.system_controller import random_port, random_password
 
 
-def rustserver():
+def rustserver(image):
     data = {}
     game_port = random_port()
     rcon_port = random_port()
     ssh_port = random_port()
     app_port = random_port()
 
-    command = "docker run -td -p {0}:{0}/udp -p {0}:{0}/tcp -p {1}:{1}/tcp -p {2}:{2}/tcp -p {3}:22 rustserver".format(game_port, rcon_port, app_port, ssh_port)
+    command = "docker run -td -p {0}:{0}/udp -p {0}:{0}/tcp -p {1}:{1}/tcp -p {2}:{2}/tcp -p {3}:22 {4}".format(game_port, rcon_port, app_port, ssh_port, image)
 
     try:
         container_id = check_output(command, shell=True).decode('ascii')
@@ -34,7 +34,7 @@ def rustserver():
     return data
 
 
-def minecraft():
+def minecraft(image):
     data = {}
     game_port = random_port()
     bedrock_port = random_port()
@@ -46,7 +46,7 @@ def minecraft():
     rcon_port = "-p {0}:{0}/tcp".format(rcon_port)
     ssh_port = "-p {0}:22/tcp".format(ssh_port)
 
-    command = "docker run -td {0} {1} {2} {3} ".format(game_port, bedrock_port, rcon_port,  ssh_port)
+    command = "docker run -td {0} {1} {2} {3} {4}".format(game_port, bedrock_port, rcon_port,  ssh_port, image)
 
     try:
         container_id = check_output(command, shell=True).decode('ascii')
