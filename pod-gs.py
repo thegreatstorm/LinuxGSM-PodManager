@@ -55,7 +55,11 @@ if args.create:
         print("Creating Docker Container")
         print("--------------------------------------------------------")
         user_input = args.create
-        create_game_server(app_settings, user_input)
+        image = args.os
+        if args.os and args.os is not None:
+            create_game_server(app_settings, user_input, image)
+        else:
+            print("Select OS using command --os=\"\"")
 
 if args.list:
     print("Docker Containers List")
