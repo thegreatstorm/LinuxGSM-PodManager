@@ -8,5 +8,5 @@ RUN apt install -y curl wget file tar bzip2 gzip unzip bsdmainutils python util-
 ENV TERM=xterm
 RUN adduser rustserver
 RUN su - rustserver
-RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh rustserver
+RUN wget -O linuxgsm.sh https://linuxgsm.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh rustserver
 RUN ./rustserver install
