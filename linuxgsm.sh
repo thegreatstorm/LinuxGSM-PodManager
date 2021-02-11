@@ -64,4 +64,4 @@ if args.list:
     print("Game Server List")
     print("--------------------------------------------------------")
     for x in os.listdir('{}/playbooks/'.format(prefix_dir)):
-      print x
+      print(x)
