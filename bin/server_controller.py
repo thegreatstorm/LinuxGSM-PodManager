@@ -1,5 +1,5 @@
 
-from bin.servers.servers import rustserver, minecraft
+from bin.servers.servers import rustserver, minecraft, terraria
 
 
 def create_game_server(app_settings, game_server, image):
@@ -7,5 +7,7 @@ def create_game_server(app_settings, game_server, image):
         rustserver(image)
     elif game_server == "minecraft":
         minecraft(image)
+    elif game_server == "terraria":
+        terraria(image)
     else:
         print("game_server not in the list.")
