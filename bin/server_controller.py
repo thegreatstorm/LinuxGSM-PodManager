@@ -9,5 +9,7 @@ def create_game_server(app_settings, game_server, image):
         minecraft(image)
     elif game_server == "terraria":
         terraria(image)
+    elif game_server == "valheim":
+        terraria(image)
     else:
         print("game_server not in the list.")
