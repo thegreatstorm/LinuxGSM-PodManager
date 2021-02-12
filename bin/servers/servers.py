@@ -70,8 +70,6 @@ def minecraft(image):
 def terraria(image):
     data = {}
     game_port = random_port()
-    bedrock_port = random_port()
-    rcon_port = random_port()
     ssh_port = random_port()
 
     game_port = "-p {0}:{0}/udp -p {0}:{0}/tcp".format(game_port)
@@ -85,7 +83,6 @@ def terraria(image):
 
         data["container_id"] = container_id
         data["game_port"] = game_port
-        data["rcon_port"] = rcon_port
         data["ssh_port"] = ssh_port
 
         # Insert New Record into database.
