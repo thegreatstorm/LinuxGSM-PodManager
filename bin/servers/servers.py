@@ -56,8 +56,8 @@ class RustServer:
             commands = []
             commands.append("echo 'echo -e \'Welcome to Storm Pods! Server Port: {} Rcon Port: {} Mobile Port: {} \'' >> /etc/bashrc".format(game_port,rcon_port,app_port))
             commands.append('git clone https://github.com/thegreatstorm/ansiblepods.git /opt/ansiblepods')
-            commands.append('ansible-playbook /opt/ansiblepods/rustserver/requirements.yml')
-            commands.append('ansible-playbook /opt/ansiblepods/rustserver/install.yml')
+            commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/requirements.yml')
+            commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/setup.yml')
 
             for command in commands:
                 command = command_prefix(data["container_id"], command, 'root')
