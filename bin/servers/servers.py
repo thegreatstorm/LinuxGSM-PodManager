@@ -37,10 +37,9 @@ class RustServer:
         data = {}
         game_port = random_port()
         rcon_port = random_port()
-        ssh_port = random_port()
         app_port = random_port()
 
-        command = "docker run -td -p {0}:{0}/udp -p {0}:{0}/tcp -p {1}:{1}/tcp -p {2}:{2}/tcp -p {3}:22 {4}".format(game_port, rcon_port, app_port, ssh_port, self.image)
+        command = "docker run -td -p {0}:{0}/udp -p {0}:{0}/tcp -p {1}:{1}/tcp -p {2}:{2}/tcp -p {3}".format(game_port, rcon_port, app_port, self.image)
 
         try:
             container_id = check_output(command, shell=True).decode('ascii')
