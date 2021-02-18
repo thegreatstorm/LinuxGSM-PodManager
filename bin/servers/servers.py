@@ -57,6 +57,7 @@ class RustServer:
             commands.append('git clone https://github.com/thegreatstorm/ansiblepods.git /opt/ansiblepods > /dev/null')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/requirements.yml')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/setup.yml')
+            commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/install.yml')
 
             for command in commands:
                 command = command_prefix(data["container_id"], command, 'root')
