@@ -3,12 +3,17 @@ from bin.servers.servers import RustServer
 
 
 class Servers:
-    def __init__(self, app_settings=None, user_input=None, container=None, config_json=None):
-        self.image = "linuxgsm"
+    def __init__(self, image=None, app_settings=None, user_input=None, container=None, config_json=None):
+        self.image = image
         self.app_settings = app_settings
         self.user_input = user_input
         self.config_json = config_json
         self.container = container
+
+        if image is None:
+            self.image = ""
+        else:
+            self.image = image
 
         if app_settings is None:
             self.app_settings = ""

@@ -74,7 +74,7 @@ if args.create and args.create is not None:
     print("Creating Docker Container")
     print("--------------------------------------------------------")
     user_input = args.create
-    server = Servers(app_settings=app_settings, user_input=user_input)
+    server = Servers(app_settings=app_settings, image=app_settings["docker_image"], user_input=user_input)
     server.create()
 
 if args.delete and args.delete is not None:
