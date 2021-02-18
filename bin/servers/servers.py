@@ -54,7 +54,7 @@ class RustServer:
             # Insert New Record into database.
             commands = []
             commands.append("echo 'echo -e \'Welcome to Storm Pods! Server Port: {} Rcon Port: {} Mobile Port: {} \'' >> /etc/bashrc".format(game_port,rcon_port,app_port))
-            commands.append('git clone https://github.com/thegreatstorm/ansiblepods.git /opt/ansiblepods')
+            commands.append('git clone https://github.com/thegreatstorm/ansiblepods.git /opt/ansiblepods > /dev/null')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/requirements.yml')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/setup.yml')
 
