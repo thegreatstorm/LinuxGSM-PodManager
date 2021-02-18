@@ -47,7 +47,7 @@ print("")
 if args.install:
     print("Installing Dockerfile: {1}/var/lib/docker/{0}/Dockerfile".format(app_settings["docker_image"], app_settings["app_dir"]))
     print("--------------------------------------------------------")
-    command = "docker build -t storm-pod:latest . -f {1}/var/lib/docker/{0}/Dockerfile".format(app_settings["docker_image"], app_settings["app_dir"])
+    command = "docker build -t {0}:latest . -f {1}/var/lib/docker/{0}/Dockerfile".format(app_settings["docker_image"], app_settings["app_dir"])
     os.system(command)
     print("Docker Image Installed: {}:latest".format(app_settings["docker_image"]))
 
