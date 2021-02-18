@@ -14,3 +14,15 @@ def config_controller(script_dir, default, local):
         config.read(local_config_path)
 
     return config
+
+
+def get_game_config(config_file):
+    # Game Configuration
+    game_config = {}
+    config = configparser.RawConfigParser()
+    config.read(config_file)
+    for each_section in config.sections():
+        for (key, value) in config.items(each_section):
+            game_config[key] = value
+
+    return game_config
