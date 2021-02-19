@@ -89,4 +89,5 @@ class RustServer:
         os.system(command)
         command = "ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/start.yml"
         command = command_prefix(self.container, command, 'rustserver')
+        print(command)
         os.system(command)
