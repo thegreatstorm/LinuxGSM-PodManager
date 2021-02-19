@@ -9,7 +9,6 @@ class Servers:
         self.user_input = user_input
         self.config_json = config_json
         self.container = container
-        self.app_dir = app_dir
 
         if image is None:
             self.image = ""
