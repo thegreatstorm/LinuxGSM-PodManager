@@ -72,6 +72,7 @@ class RustServer:
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/requirements.yml')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/setup.yml')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/install.yml')
+            commands.append('chmod -R 777 /opt')
 
             for command in commands:
                 command = command_prefix(data["container_id"], command, 'root')
@@ -86,6 +87,6 @@ class RustServer:
     def start(self):
         command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.config_file, self.container)
         os.system(command)
-        command = "/home/rustserver/./rustserver start"
+        command = "ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/start.yml"
         command = command_prefix(self.container, command, 'rustserver')
         os.system(command)
