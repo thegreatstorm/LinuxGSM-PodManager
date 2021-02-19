@@ -86,3 +86,6 @@ class RustServer:
     def start(self):
         command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.config_file, self.container)
         os.system(command)
+        command = "/home/rustserver/./rustserver start"
+        command = command_prefix(self.container, command, 'rustserver')
+        os.system(command)
