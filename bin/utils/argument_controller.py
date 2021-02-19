@@ -36,13 +36,9 @@ def arguments(args, app_settings):
         user_input = args.start
         if args.config and args.config is not None:
             config_file = args.config
-            game_config = get_game_config(config_file)
             if args.container and args.container is not None:
                 container = args.container
-                ansible_vars = Ansible(config=game_config)
-                ansible_vars = ansible_vars.convert_config_json()
-                server = Servers(user_input=user_input, container=container, config_json=ansible_vars,
-                                 config_file=config_file)
+                server = Servers(user_input=user_input, container=container, config_file=config_file)
                 server.start()
             else:
                 print("No container id Provided. --container=\"<id/name>\"")

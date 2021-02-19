@@ -50,7 +50,7 @@ class Servers:
 
     def start(self):
         if self.user_input == "rustserver":
-            server = RustServer(container=self.container, config_json=self.config_json, config_file=self.config_file)
+            server = RustServer(container=self.container, config_file=self.config_file)
             server.start()
         else:
             print("User Input not in the list.")
