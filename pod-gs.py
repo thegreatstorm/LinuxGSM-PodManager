@@ -62,7 +62,7 @@ if args.start and args.start is not None:
             container = args.container
             ansible_vars = Ansible(config=game_config)
             ansible_vars = ansible_vars.convert_config_json()
-            server = Servers(user_input=user_input, container=container, config_json=ansible_vars)
+            server = Servers(user_input=user_input, container=container, config_json=ansible_vars, config_file=config_file)
             server.start()
         else:
             print("No container id Provided. --container=\"<id/name>\"")

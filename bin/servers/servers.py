@@ -13,10 +13,11 @@ def command_prefix(container, command, user):
 
 
 class RustServer:
-    def __init__(self, image=None, container=None, config_json=None):
+    def __init__(self, image=None, container=None, config_json=None, app_dir=None, config_file=None):
         self.image = image
         self.container = container
         self.config_json = config_json
+        self.app_dir = app_dir
 
         if image is None:
             self.image = ""
@@ -32,6 +33,16 @@ class RustServer:
             self.container = ""
         else:
             self.container = container
+
+        if app_dir is None:
+            self.app_dir = ""
+        else:
+            self.app_dir = app_dir
+
+        if config_file is None:
+            self.config_file = ""
+        else:
+            self.config_file = config_file
 
     def install(self):
         data = {}
@@ -70,7 +81,5 @@ class RustServer:
         return data
 
     def start(self):
-        # Needs container id
-        command = "ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/start.yml --extra-vars '{}'".format(self.config_json)
-        command = command_prefix(self.container, command, 'root')
-        #os.system(command)
+        command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.config_file, self.container)
+        os.system(command)

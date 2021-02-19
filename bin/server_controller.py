@@ -3,12 +3,13 @@ from bin.servers.servers import RustServer
 
 
 class Servers:
-    def __init__(self, image=None, app_settings=None, user_input=None, container=None, config_json=None):
+    def __init__(self, image=None, app_settings=None, user_input=None, container=None, config_json=None, config_file=None):
         self.image = image
         self.app_settings = app_settings
         self.user_input = user_input
         self.config_json = config_json
         self.container = container
+        self.app_dir = app_dir
 
         if image is None:
             self.image = ""
@@ -35,6 +36,12 @@ class Servers:
         else:
             self.config_json = config_json
 
+        if config_file is None:
+            self.config_file = ""
+        else:
+            self.config_file = config_file
+
+
     def create(self):
         if self.user_input == "rustserver":
             server = RustServer(self.image)
@@ -44,7 +51,7 @@ class Servers:
 
     def start(self):
         if self.user_input == "rustserver":
-            server = RustServer(container=self.container, config_json=self.config_json)
+            server = RustServer(container=self.container, config_json=self.config_json, config_file=self.config_file)
             server.start()
         else:
             print("User Input not in the list.")
