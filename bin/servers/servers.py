@@ -84,8 +84,9 @@ class RustServer:
         return data
 
     def start(self):
+        # Currently disabled until environment variables figured out.
         command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.config_file, self.container)
         os.system(command)
-        command = "/home/rustserver/./rustserver start"
+        command = "ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/start.yml"
         command = command_prefix(self.container, command, 'rustserver')
         os.system(command)
