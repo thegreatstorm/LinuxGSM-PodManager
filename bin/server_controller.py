@@ -1,5 +1,5 @@
 import os
-from bin.servers.servers import RustServer, Valheim
+from bin.servers.servers import RustServer
 
 
 class Servers:
@@ -41,14 +41,8 @@ class Servers:
             self.config_file = config_file
 
     def create(self):
-        if self.user_input == "rustserver":
-            server = RustServer(self.image)
-            server.install()
-        if self.user_input == "valheim":
-            server = Valheim(self.image)
-            server.install()
-        else:
-            print("User Input not in the list.")
+        server = RustServer(self.image)
+        server.install()
 
     def delete(self):
         command = "docker rm -f {}".format(self.container)
