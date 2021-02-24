@@ -89,7 +89,7 @@ class RustServer:
             command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.app_settings["app_dir"], self.container)
             os.system(command)
 
-            print("Get into the container: docker exec -u rustserver -t {} /bin/bash".format(container_id))
+            print("Get copy of the config or edit lib/confs/rustserver.conf and do a --install=\"rustserver\" --config\"<config_file_full_path>\" --container=\"<id/name>\" ")
         except Exception as e:
             print("Failed to create container: {}".format(str(e)))
             data["status"] = "Failed to create container. {}".format(str(e))
