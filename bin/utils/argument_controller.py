@@ -2,7 +2,7 @@ import argparse
 import os
 
 
-from bin.servers import Servers
+from bin.server_controller import Servers
 
 
 def argument_controller():
@@ -14,7 +14,6 @@ def argument_controller():
     parser.add_argument('--install', help='Install Docker Image', required=False, action='store_true')
     parser.add_argument('--list', help='List Game Servers', required=False, action='store_true')
 
-    # Disabled Arguments until we figure out how to get start to work.
     # parser.add_argument('--start', help='Start your game server (ID,Name) --config, --container needed.', required=False)
     # parser.add_argument('--config', help='You can edit and point using --config="var/lib/confs/rustserver.conf"', required=False)
     args = parser.parse_args()
@@ -22,9 +21,6 @@ def argument_controller():
 
 
 def arguments(args, app_settings):
-    # This was moved from the main file pod-gs.py to prevent constant permission change and deletation of pod-gs.py
-
-    # If the user types in --install
     if args.install:
         print("Installing Dockerfile: {1}/var/lib/docker/{0}/Dockerfile".format(app_settings["docker_image"], app_settings["app_dir"]))
         print("--------------------------------------------------------")
@@ -52,19 +48,18 @@ def arguments(args, app_settings):
             print("Make sure you use --config <config-file>")
     '''
 
-    # If the user types in --create="<gameserver>"
     if args.create and args.create is not None:
         print("Creating Docker Container")
         print("--------------------------------------------------------")
         user_input = args.create
-        server = Servers(image=app_settings["docker_image"], game_server=user_input)
+        server = Servers(app_settings=app_settings, image=app_settings["docker_image"], user_input=user_input)
         server.create()
 
-    # If the user types in --delete --container="<id/name>"
     if args.delete and args.delete is not None:
+        user_input = args.delete
+        print("Deleting Docker Container: {}".format(user_input))
+        print("--------------------------------------------------------")
         if args.container and args.container is not None:
-            print("Deleting Docker Container: {}".format(args.container))
-            print("--------------------------------------------------------")
             container = args.container
             server = Servers(container=container)
             server.delete()
@@ -72,7 +67,6 @@ def arguments(args, app_settings):
             print("No container Provided. --container=\"<id/name>\"")
             exit(1)
 
-    # Gets list of supported server containers --list
     if args.list:
         print("Game Server Containers List")
         print("Make sure you keep me updated do a git pull!")

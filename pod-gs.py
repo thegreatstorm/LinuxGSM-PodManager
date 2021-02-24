@@ -7,7 +7,6 @@ import os
 from bin.utils.argument_controller import argument_controller, arguments
 from bin.utils.configuration_controller import config_controller
 
-
 app_settings = {}
 # Grabs path where this script was ran.
 script_dir = os.path.dirname(os.path.abspath(__file__))
