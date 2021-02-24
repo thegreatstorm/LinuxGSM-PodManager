@@ -183,7 +183,7 @@ class Valheim:
 
     def start(self):
         # Currently disabled until environment variables figured out.
-        command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/valheim/rustserver.cfg".format(self.config_file, self.container)
+        command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/valheim/valheim.cfg".format(self.config_file, self.container)
         os.system(command)
         command = "ansible-playbook /opt/ansiblepods/linuxgsm/valheim/start.yml"
         command = command_prefix(self.container, command, 'rustserver')
