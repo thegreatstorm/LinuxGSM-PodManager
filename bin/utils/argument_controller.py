@@ -14,8 +14,8 @@ def argument_controller():
     parser.add_argument('--install', help='Install Docker Image', required=False, action='store_true')
     parser.add_argument('--list', help='List Game Servers', required=False, action='store_true')
 
-    # parser.add_argument('--start', help='Start your game server (ID,Name) --config, --container needed.', required=False)
-    # parser.add_argument('--config', help='You can edit and point using --config="var/lib/confs/rustserver.conf"', required=False)
+    parser.add_argument('--start', help='Start your game server (ID,Name) --config, --container needed.', required=False)
+    parser.add_argument('--config', help='You can edit and point using --config="var/lib/confs/rustserver.conf"', required=False)
     args = parser.parse_args()
     return args
 
