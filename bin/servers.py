@@ -73,7 +73,7 @@ class Servers:
             commands.append("echo 'export app_port={}' >> /etc/bashrc".format(app_port))
             commands.append("echo 'echo -e \'Welcome to Storm Pods! Server Port: {} Rcon Port: {} Mobile Port: {} \'' >> /etc/bashrc".format(game_port,rcon_port,app_port))
             commands.append('git clone https://github.com/thegreatstorm/ansiblepods.git /opt/ansiblepods > /dev/null')
-            commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/requirements/{0}.yml'.format(self.game_server))
+            commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/requirements/{0}.yml --extra-vars \'game_server={0}\''.format(self.game_server))
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/setup.yml --extra-vars \'game_server={}\''.format(self.game_server))
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/install.yml --extra-vars \'game_server={}\''.format(self.game_server))
             commands.append('chmod -R 777 /opt')
