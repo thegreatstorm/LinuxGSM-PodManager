@@ -1,0 +1,6 @@
+ansible==2.9.17
+urllib3==1.24.2
+jsonpatch==1.21
+jsonpointer==1.10
+jsonschema==2.6.0
+configparser==4.0.2
