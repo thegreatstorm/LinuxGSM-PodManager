@@ -29,7 +29,7 @@ def arguments(args, app_settings):
         os.system(command)
         print("Docker Image Installed: {}:latest".format(app_settings["docker_image"]))
 
-    '''
+
     # Haven't figured out how to start the rust server remotely with environment variables, I'm trying to avoid a database to store info.
     if args.start and args.start is not None:
         print("Starting Game Server")
@@ -46,7 +46,6 @@ def arguments(args, app_settings):
                 exit(1)
         else:
             print("Make sure you use --config <config-file>")
-    '''
 
     if args.create and args.create is not None:
         print("Creating Docker Container")
