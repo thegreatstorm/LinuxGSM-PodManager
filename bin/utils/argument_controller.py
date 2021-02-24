@@ -57,7 +57,7 @@ def arguments(args, app_settings):
         print("Creating Docker Container")
         print("--------------------------------------------------------")
         user_input = args.create
-        server = Servers(app_settings=app_settings, image=app_settings["docker_image"], user_input=user_input)
+        server = Servers(image=app_settings["docker_image"], game_server=user_input)
         server.create()
 
     # If the user types in --delete --container="<id/name>"

@@ -14,7 +14,6 @@ def command_prefix(container, command, user):
 
 class Servers:
     def __init__(self, image=None, container=None, config_json=None, app_dir=None, config_file=None, game_server=None):
-        self.image = image
         self.container = container
         self.config_json = config_json
         self.app_dir = app_dir
@@ -49,7 +48,7 @@ class Servers:
         else:
             self.game_server = game_server
 
-    def install(self):
+    def create(self):
         data = {}
         game_port = random_port()
         rcon_port = random_port()
