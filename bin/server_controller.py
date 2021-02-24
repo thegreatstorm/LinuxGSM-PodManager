@@ -40,7 +40,6 @@ class Servers:
         else:
             self.config_file = config_file
 
-
     def create(self):
         if self.user_input == "rustserver":
             server = RustServer(self.image)
