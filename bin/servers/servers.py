@@ -105,6 +105,13 @@ class RustServer:
         print(command)
         os.system(command)
 
+    def stop(self):
+        # Currently disabled until environment variables figured out.
+        command = "ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/stop.yml"
+        command = command_prefix(self.container, command, 'rustserver')
+        print(command)
+        os.system(command)
+
 
 class Valheim:
     def __init__(self, image=None, app_settings=None, container=None, config_json=None, app_dir=None, config_file=None):

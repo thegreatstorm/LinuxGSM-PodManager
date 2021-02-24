@@ -44,9 +44,6 @@ class Servers:
         if self.user_input == "rustserver":
             server = RustServer(app_settings=self.app_settings, image=self.image)
             server.install()
-        elif self.user_input == "valheim":
-            server = Valheim(app_settings=self.app_settings, image=self.image)
-            server.install()
         else:
             print("User Input not in the list.")
 
@@ -54,9 +51,13 @@ class Servers:
         if self.user_input == "rustserver":
             server = RustServer(config_file=self.config_file, container=self.container)
             server.start()
-        elif self.user_input == "valheim":
-            server = Valheim(config_file=self.config_file, container=self.container)
-            server.start()
+        else:
+            print("User Input not in the list.")
+
+    def stop(self):
+        if self.user_input == "rustserver":
+            server = RustServer(config_file=self.config_file, container=self.container)
+            server.stop()
         else:
             print("User Input not in the list.")
 
