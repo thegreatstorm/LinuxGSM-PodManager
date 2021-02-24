@@ -1,5 +1,5 @@
 import os
-from bin.servers.servers import RustServer
+from bin.servers.servers import RustServer, Valheim
 
 
 class Servers:
@@ -45,7 +45,7 @@ class Servers:
             server = RustServer(self.image)
             server.install()
         if self.user_input == "valheim":
-            server = RustServer(self.image)
+            server = Valheim(self.image)
             server.install()
         else:
             print("User Input not in the list.")
