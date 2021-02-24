@@ -86,7 +86,7 @@ class RustServer:
                 os.system(command)
 
             # Copy over the config.
-            command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.app_settings["app_dir"], self.container)
+            command = "docker cp {}/lib/confs/rustserver.cfg {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.app_settings["app_dir"], self.container)
             os.system(command)
 
             print("Get copy of the config or edit lib/confs/rustserver.conf and do a --install=\"rustserver\" --config\"<config_file_full_path>\" --container=\"<id/name>\" ")
