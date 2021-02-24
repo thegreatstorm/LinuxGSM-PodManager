@@ -82,7 +82,7 @@ class Servers:
                 command = command_prefix(data["container_id"], command, 'root')
                 os.system(command)
 
-            print("To access container: docker exec -u {} -it {} /bin/bash".format(self.game_server, self.container))
+            print("To access container: docker exec -u {} -it {} /bin/bash".format(self.game_server, container_id))
 
         except Exception as e:
             print("Failed to create container: {}".format(str(e)))
