@@ -45,15 +45,14 @@ class Servers:
         if self.user_input == "rustserver":
             server = RustServer(self.image)
             server.install()
+        if self.user_input == "valheim":
+            server = RustServer(self.image)
+            server.install()
         else:
             print("User Input not in the list.")
 
     def start(self):
-        if self.user_input == "rustserver":
-            server = RustServer(container=self.container, config_file=self.config_file)
-            server.start()
-        else:
-            print("User Input not in the list.")
+        print("Still trying to support this.")
 
     def delete(self):
         command = "docker rm -f {}".format(self.container)
