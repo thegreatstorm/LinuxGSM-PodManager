@@ -12,7 +12,7 @@ def command_prefix(container, command, user):
     return main_command
 
 
-class RustServer:
+class Servers:
     def __init__(self, image=None, container=None, config_json=None, app_dir=None, config_file=None, game_server=None):
         self.image = image
         self.container = container
@@ -100,3 +100,6 @@ class RustServer:
         print(command)
         os.system(command)
 
+    def delete(self):
+        command = "docker rm -f {}".format(self.container)
+        os.system(command)

@@ -2,9 +2,7 @@ import argparse
 import os
 
 
-from bin.server_controller import Servers
-from bin.servers.ansible import Ansible
-from bin.utils.configuration_controller import config_controller
+from bin.servers import Servers
 
 
 def argument_controller():
