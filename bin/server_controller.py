@@ -42,10 +42,10 @@ class Servers:
 
     def create(self):
         if self.user_input == "rustserver":
-            server = RustServer(self.image)
+            server = RustServer(app_settings=self.app_settings, image=self.image)
             server.install()
         elif self.user_input == "valheim":
-            server = Valheim(self.image)
+            server = Valheim(app_settings=self.app_settings, image=self.image)
             server.install()
         else:
             print("User Input not in the list.")

@@ -13,11 +13,12 @@ def command_prefix(container, command, user):
 
 
 class RustServer:
-    def __init__(self, image=None, container=None, config_json=None, app_dir=None, config_file=None):
+    def __init__(self, image=None, app_settings=None, container=None, config_json=None, app_dir=None, config_file=None):
         self.image = image
         self.container = container
         self.config_json = config_json
         self.app_dir = app_dir
+        self.app_settings = app_settings
 
         if image is None:
             self.image = ""
@@ -43,6 +44,11 @@ class RustServer:
             self.config_file = ""
         else:
             self.config_file = config_file
+
+        if app_settings is None:
+            self.app_settings = ""
+        else:
+            self.app_settings = app_settings
 
     def install(self):
         data = {}
@@ -72,12 +78,16 @@ class RustServer:
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/requirements.yml')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/setup.yml')
             commands.append('ansible-playbook /opt/ansiblepods/linuxgsm/rustserver/install.yml')
+
             commands.append('chmod -R 777 /opt')
 
             for command in commands:
                 command = command_prefix(data["container_id"], command, 'root')
                 os.system(command)
 
+            # Copy over the config.
+            command = "docker cp {} {}:/home/rustserver/lgsm/config-lgsm/rustserver/rustserver.cfg".format(self.app_settings["app_dir"], self.container)
+            os.system(command)
         except Exception as e:
             print("Failed to create container: {}".format(str(e)))
             data["status"] = "Failed to create container. {}".format(str(e))
@@ -95,11 +105,12 @@ class RustServer:
 
 
 class Valheim:
-    def __init__(self, image=None, container=None, config_json=None, app_dir=None, config_file=None):
+    def __init__(self, image=None, app_settings=None, container=None, config_json=None, app_dir=None, config_file=None):
         self.image = image
         self.container = container
         self.config_json = config_json
         self.app_dir = app_dir
+        self.app_settings = app_settings
 
         if image is None:
             self.image = ""
@@ -125,6 +136,11 @@ class Valheim:
             self.config_file = ""
         else:
             self.config_file = config_file
+
+        if app_settings is None:
+            self.app_settings = ""
+        else:
+            self.app_settings = app_settings
 
     def install(self):
         data = {}
