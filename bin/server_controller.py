@@ -50,9 +50,6 @@ class Servers:
         else:
             print("User Input not in the list.")
 
-    def start(self):
-        print("Still trying to support this.")
-
     def delete(self):
         command = "docker rm -f {}".format(self.container)
         os.system(command)
